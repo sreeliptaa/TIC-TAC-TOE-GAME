@@ -1,21 +1,29 @@
 package com.bridgelabz;
 
-public class TicTakToeGame {
-    // board method declaration
-    public static void createBoard()
-    {
-        char[]board = new char[10];
-        //loop executes for 9times
-        for(int i=1; i<board.length; i++)
-        {
-            board[i]=' ';  //filling blank spaces in board
-        }
-    }
-    //main method
+/**
+ * Program for TicTacToe Game playing with computer
+ * @author Sreelipta
+ * @since 2021-08-11
+ */
+public class TicTacToeGame {
+
+    static char[] board = new char[10];
+
     public static void main(String[] args) {
-        System.out.println("WELCOME TO TIC TAC TOE GAME");
-        System.out.println("EMPTY BOARD CREATED");
+        //displaying welcome message
+        System.out.println("Welcome to Tic Tac Toe Game");
+        //calling method to initialise the board
         createBoard();
     }
 
+    /**
+     * Creating method for empty board
+     * 0th index is ignored
+     */
+    private static void createBoard() {
+
+        for (int index = 1; index < board.length; index++) {
+            board[index] = ' ';
+        }
+    }
 }
