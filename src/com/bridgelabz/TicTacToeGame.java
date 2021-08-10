@@ -16,8 +16,10 @@ public class TicTacToeGame {
         System.out.println("Welcome to Tic Tac Toe Game");
         //calling method to initialise the board
         createBoard();
-        //for user to choose 'X' or 'O' mark
+        //calling method for user to choose 'X' or 'O' mark
         choosingXorO();
+        //calling method to show the current board
+        showBoard();
     }
 
     /**
@@ -54,6 +56,22 @@ public class TicTacToeGame {
                 System.out.println("Incorrect Input");
                 break;
         }
+    }
+
+    /**
+     * display the current game board
+     * creating method for show current board
+     */
+    public static void showBoard() {
+        // 0th index ignored
+        System.out.println("**Tic Tac Toe Game Board **\n");
+        System.out.println("-------------");
+        System.out.println("| "+board[1]+" | "+board[2]+" | "+board[3]+" |\n ");
+        System.out.println("-------------");
+        System.out.println("| "+board[4]+" | "+board[5]+" | "+board[6]+" |\n ");
+        System.out.println("-------------");
+        System.out.println("| "+board[7]+" | "+board[8]+" | "+board[9]+" |\n ");
+        System.out.println("-------------");
     }
 }
 
