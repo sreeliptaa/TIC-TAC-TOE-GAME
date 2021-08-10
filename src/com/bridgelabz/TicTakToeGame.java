@@ -15,6 +15,7 @@ public class TicTakToeGame {
     public static void main(String[] args) {
         System.out.println("WELCOME TO TIC TAC TOE GAME");
         System.out.println("EMPTY BOARD CREATED");
+        createBoard();
     }
 
 }
