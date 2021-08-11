@@ -64,14 +64,12 @@ public class TicTacToeGame {
      */
     public static void showBoard() {
         // 0th index ignored
-        System.out.println("**Tic Tac Toe Game Board **\n");
-        System.out.println("-------------");
-        System.out.println("| "+board[1]+" | "+board[2]+" | "+board[3]+" |\n ");
-        System.out.println("-------------");
-        System.out.println("| "+board[4]+" | "+board[5]+" | "+board[6]+" |\n ");
-        System.out.println("-------------");
-        System.out.println("| "+board[7]+" | "+board[8]+" | "+board[9]+" |\n ");
-        System.out.println("-------------");
+        System.out.println("TIC TAC TOE GAME BOARD");
+        System.out.println(board[1] + " |" + board[2] + " |" + board[3]);
+        System.out.println("--+--+--");
+        System.out.println(board[4] + " |" + board[5] + " |" + board[6]);
+        System.out.println("--+--+--");
+        System.out.println(board[7] + " |" + board[8] + " |" + board[9]);
     }
 }
 
