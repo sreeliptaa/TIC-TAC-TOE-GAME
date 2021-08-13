@@ -3,7 +3,7 @@ package com.bridgelabz;
 import java.util.Scanner;
 
 /**
- * Program for TicTacToe Game playing with computer
+ * Program for checking free space before making desired move
  * @author Sreelipta
  * @since 2021-08-11
  */
@@ -131,6 +131,10 @@ public class TicTacToeGame {
         }
         showBoard();
     }
+
+        public static boolean isSpaceFree ( char[] board, int index){
+            return board[index] == ' ';
+        }
 }
 
 
