@@ -131,7 +131,9 @@ public class TicTacToeGame {
         }
         showBoard();
     }
-
+     /**
+	 * checks for free space for the computer to make the move
+	 */
         public static boolean isSpaceFree ( char[] board, int index){
             return board[index] == ' ';
         }
