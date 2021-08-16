@@ -26,7 +26,6 @@ public class TicTacToeGame {
 
     /**
      * Creating method for empty board
-     * 0th index is ignored
      */
     private static void createBoard() {
         for (int index = 1; index < board.length; index++) {
@@ -36,8 +35,6 @@ public class TicTacToeGame {
 
     /**
      * Asking user to choose X or O
-     *
-     * @return userLetter, computerLetter
      */
     private static void choosingXorO() {
         System.out.println("Choose letter X or O to play game");
@@ -61,7 +58,7 @@ public class TicTacToeGame {
     }
 
     /**
-     * display the current game board
+     * displaying the current game board
      * creating method for show current board
      */
     public static void showBoard() {
@@ -132,10 +129,42 @@ public class TicTacToeGame {
         showBoard();
     }
 
-        public static boolean isSpaceFree ( char[] board, int index){
-            return board[index] == ' ';
+    /**
+     * This method checks for free space for the computer to make the move
+     */
+    static void move() {
+        boolean played = false;
+        while (!played) {
+            int makeMove = (int) (Math.random() * 10) % 9 + 1;
+            if (makeMove > 0 && makeMove < 10) {
+                if (board[makeMove] == ' ') {
+                    board[makeMove] = computerLetter;
+                    played = true;
+                }
+            }
         }
+        showBoard();
+    }
+
+    static void playToss() {
+        int turn = (int) Math.floor(Math.random() * 10) % 2;
+        System.out.println("To start the game enter 1 to play the toss: ");
+        Scanner sc = new Scanner(System.in);
+        int playerToss = sc.nextInt();
+        if (playerToss == turn) {
+            System.out.println("Player won the toss, enter your first Move");
+            choosingXorO();
+
+        } else {
+            System.out.println("Computer won the toss, enter your first move");
+
+            userPlay();
+        }
+    }
+
 }
+
+
 
 
 
