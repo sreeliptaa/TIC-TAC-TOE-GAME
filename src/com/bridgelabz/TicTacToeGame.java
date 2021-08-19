@@ -253,4 +253,31 @@ public class TicTacToeGame {
         }
         return place;
     }
+
+    // generates move for computer to blocks if losing game
+    static void computerSmartPlay() {
+        int placeWin = winningPosition(computerLetter,board);
+        int losing =  winningPosition(userLetter,board);
+        boolean placed = false;
+        if (losing !=-1){
+            board[losing] = computerLetter;
+            placed = true;
+        }
+        else if(placeWin!= -1){
+            board[placeWin] = computerLetter;
+            placed = true;
+        }else{
+            boolean played = false;
+            while(!played) {
+                int playMove = (int) (Math.random() * 10) % 9 + 1;
+                if (playMove>0 && playMove<10){
+                    if (board[playMove] == ' ') {
+                        board[playMove] = computerLetter;
+                        played = true;
+                    }
+                }
+            }
+        }
+        showBoard();
+    }
 }
