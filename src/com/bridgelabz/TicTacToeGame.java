@@ -258,6 +258,7 @@ public class TicTacToeGame {
 
     static void computerSmartPlay() {
         int[] border = {1, 3, 7, 9};
+        int[] center = {2, 4, 6, 8};
         int placeWin = winningPosition(computerLetter, board);
         int losing = winningPosition(userLetter, board);
         if (losing != -1) {
@@ -271,14 +272,15 @@ public class TicTacToeGame {
                     break;
                 }
             }
-        } else {
-            boolean played = false;
-            while (!played) {
-                int playMove = (int) (Math.random() * 10) % 9 + 1;
-                if (playMove > 0 && playMove < 10) {
-                    if (board[playMove] == ' ') {
-                        board[playMove] = computerLetter;
-                        played = true;
+        }
+        else{
+            if(board[5]==' '){
+                board[5]=computerLetter;
+            }else{
+                for(int i=0;i<center.length;i++){
+                    if(board[center[i]] == ' '){
+                        board[center[i]]=computerLetter;
+                        break;
                     }
                 }
             }
