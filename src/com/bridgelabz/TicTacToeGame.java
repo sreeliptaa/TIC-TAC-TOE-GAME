@@ -255,22 +255,27 @@ public class TicTacToeGame {
     }
 
     // generates move for computer to blocks if losing game
+
     static void computerSmartPlay() {
-        int placeWin = winningPosition(computerLetter,board);
-        int losing =  winningPosition(userLetter,board);
-        boolean placed = false;
-        if (losing !=-1){
+        int[] border = {1, 3, 7, 9};
+        int placeWin = winningPosition(computerLetter, board);
+        int losing = winningPosition(userLetter, board);
+        if (losing != -1) {
             board[losing] = computerLetter;
-            placed = true;
-        }
-        else if(placeWin!= -1){
+        } else if (placeWin != -1) {
             board[placeWin] = computerLetter;
-            placed = true;
-        }else{
+        } else if (losing == -1 && placeWin == -1) {
+            for (int i = 0; i < border.length; i++) {
+                if (board[border[i]] == ' ') {
+                    board[border[i]] = computerLetter;
+                    break;
+                }
+            }
+        } else {
             boolean played = false;
-            while(!played) {
+            while (!played) {
                 int playMove = (int) (Math.random() * 10) % 9 + 1;
-                if (playMove>0 && playMove<10){
+                if (playMove > 0 && playMove < 10) {
                     if (board[playMove] == ' ') {
                         board[playMove] = computerLetter;
                         played = true;
