@@ -132,13 +132,15 @@ public class TicTacToeGame {
     /**
      * This method checks for free space for the computer to make the move
      */
-    static void move() {
+    static void computerPlay() {
+        // generates move for computer using random function
+        // while loop runs until flag true, flag becomes false on making a move
         boolean played = false;
         while (!played) {
-            int makeMove = (int) (Math.random() * 10) % 9 + 1;
-            if (makeMove > 0 && makeMove < 10) {
-                if (board[makeMove] == ' ') {
-                    board[makeMove] = computerLetter;
+            int playMove = (int) (Math.random() * 10) % 9 + 1;
+            if (playMove > 0 && playMove < 10) {
+                if (board[playMove] == ' ') {
+                    board[playMove] = computerLetter;
                     played = true;
                 }
             }
@@ -146,31 +148,77 @@ public class TicTacToeGame {
         showBoard();
     }
 
-    static void playToss() {
+    // method to check for starting player through coin toss result
+
+    static void toss() {
         int turn = (int) Math.floor(Math.random() * 10) % 2;
         System.out.println("To start the game enter 1 to play the toss: ");
         Scanner sc = new Scanner(System.in);
         int playerToss = sc.nextInt();
         if (playerToss == turn) {
             System.out.println("Player won the toss, enter your first Move");
-            choosingXorO();
+            userPlay();
+            computerPlay();
 
         } else {
             System.out.println("Computer won the toss, enter your first move");
-
+            computerPlay();
             userPlay();
+
         }
+
     }
-
+    // method to check for wining player
+    public static char playerWon(char[] board){
+        int[][] game = {{1,2,3},{4,5,6},{7,8,9},{1,5,9},{3,5,7},{1,4,7},{2,5,8},{3,6,9}};
+        char won = 'W';
+        for(int i=0;i<game.length;i++){
+            if(board[game[i][0]] == board[game[i][1]] && board[game[i][1]] == board[game[i][2]]){
+                if(board[game[i][0]]!=' '){
+                    won = board[game[i][0]];
+                    break;
+                }
+            }
+        }
+        return won;
+    }
+    // method to check for empty spaces on game board
+    public static boolean isBoardFilled(char[] board){
+        boolean filled = true;
+        for(int i=1;i<board.length;i++){
+            if(board[i]==' '){
+                filled = false;
+                break;
+            }
+        }
+        return filled;
+    }
+    // method to check game state
+    public static char getGameState(char[] board,char user,char computer,char current) {
+        char won = playerWon(board);
+        char tie = ' ', state = ' ';
+        if (current == user) {
+            tie = computer;
+        } else {
+            tie = user;
+        }
+        switch (won) {
+            case 'F':
+                state = tie;
+                break;
+            case 'X':
+                System.out.println("X has won the game");
+                state = 'E';
+                break;
+            case 'O':
+                System.out.println("O has won the game");
+                state = 'E';
+                break;
+        }
+        if (isBoardFilled(board)) {
+            state = 'E';
+        }
+        return state;
+    }
 }
-
-
-
-
-
-
-
-
-
-
 
