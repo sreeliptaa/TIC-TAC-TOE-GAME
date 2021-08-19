@@ -12,6 +12,7 @@ public class TicTacToeGame {
     static char userLetter, computerLetter;
 
     public static void main(String[] args) {
+
         //displaying welcome message
         System.out.println("Welcome to Tic Tac Toe Game");
         //calling method to initialise the board
@@ -22,6 +23,7 @@ public class TicTacToeGame {
         showBoard();
         //calling method to make a move to a desired location in board by the user
         userPlay();
+
     }
 
     /**
@@ -272,14 +274,13 @@ public class TicTacToeGame {
                     break;
                 }
             }
-        }
-        else{
-            if(board[5]==' '){
-                board[5]=computerLetter;
-            }else{
-                for(int i=0;i<center.length;i++){
-                    if(board[center[i]] == ' '){
-                        board[center[i]]=computerLetter;
+        } else {
+            if (board[5] == ' ') {
+                board[5] = computerLetter;
+            } else {
+                for (int i = 0; i < center.length; i++) {
+                    if (board[center[i]] == ' ') {
+                        board[center[i]] = computerLetter;
                         break;
                     }
                 }
@@ -287,4 +288,26 @@ public class TicTacToeGame {
         }
         showBoard();
     }
+
+    // play game until end
+    public static void playTillEnd(char playerLetter, char[] board, char computerLetter) {
+        char start = userLetter;
+        if (start == playerLetter) {
+            System.out.println("Player wins coin toss, start first");
+        } else {
+            System.out.println("Player loses coin toss, computer starts first");
+        }
+        char gameState = start;
+        while (gameState != 'E') {
+            if (gameState == playerLetter) {
+                userPlay();
+                gameState = getGameState(board, playerLetter, computerLetter, gameState);
+            }
+            if (gameState == computerLetter) {
+                computerPlay();
+                gameState = getGameState(board, playerLetter, computerLetter, gameState);
+            }
+        }
+    }
+
 }
