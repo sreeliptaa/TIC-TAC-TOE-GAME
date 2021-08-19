@@ -22,20 +22,24 @@ public class TicTacToeGame {
         showBoard();
         //calling method to make a move to a desired location in board by the user
         userPlay();
+        // calling method to check for free space for the computer to make the move
+        compMove();
+         // calling method to check for starting player through coin toss result
+        playToss();
     }
 
-    /**
-     * Creating method for empty board
-     */
+    
+     // Creating method for empty board
+     
     private static void createBoard() {
         for (int index = 1; index < board.length; index++) {
             board[index] = ' ';
         }
     }
 
-    /**
-     * Asking user to choose X or O
-     */
+    
+     //Asking user to choose X or O
+     
     private static void choosingXorO() {
         System.out.println("Choose letter X or O to play game");
         Scanner sc = new Scanner(System.in);
@@ -129,10 +133,10 @@ public class TicTacToeGame {
         showBoard();
     }
 
-    /**
-     * This method checks for free space for the computer to make the move
-     */
-    static void move() {
+   
+     // This method checks for free space for the computer to make the move
+     
+    static void compMove() {
         boolean played = false;
         while (!played) {
             int makeMove = (int) (Math.random() * 10) % 9 + 1;
@@ -145,7 +149,7 @@ public class TicTacToeGame {
         }
         showBoard();
     }
-
+     // method to check for starting player through coin toss result
     static void playToss() {
         int turn = (int) Math.floor(Math.random() * 10) % 2;
         System.out.println("To start the game enter 1 to play the toss: ");
